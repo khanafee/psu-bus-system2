@@ -3,6 +3,7 @@ import BusForm from "./components/BusForm";
 import BusTable from "./components/BusTable";
 import RouteManagement from "./components/RouteManagement";
 import BusStopManagement from "./components/BusStopManagement";
+import RouteStopManagement from './components/RouteStopManagement';
 
 function App() {
   const [activeTab, setActiveTab] = useState("bus"); // สถานะสำหรับสลับหน้า (bus หรือ route)
@@ -60,52 +61,30 @@ function App() {
   return (
     <div className="min-h-screen bg-gray-50 py-10">
       <div className="max-w-4xl mx-auto px-4 font-sans">
-        {/* ส่วนหัว และ เมนู Tabs */}
+        
+        {/* เมนู Tabs */}
         <div className="flex flex-col md:flex-row justify-between items-center border-b pb-4 mb-8">
-          <h1 className="text-3xl font-bold text-gray-800 mb-4 md:mb-0">
-            ระบบจัดตารางเดินรถ
-          </h1>
+          <h1 className="text-3xl font-bold text-gray-800 mb-4 md:mb-0">ระบบจัดตารางเดินรถ</h1>
           <div className="flex bg-gray-200 rounded-lg p-1 overflow-x-auto w-full md:w-auto">
-            <button
-              onClick={() => setActiveTab("bus")}
-              className={`px-4 py-2 rounded-md font-medium text-sm whitespace-nowrap ${activeTab === "bus" ? "bg-white text-blue-600 shadow-sm" : "text-gray-600"}`}
-            >
-              🚌 จัดการรถบัส
-            </button>
-            <button
-              onClick={() => setActiveTab("route")}
-              className={`px-4 py-2 rounded-md font-medium text-sm whitespace-nowrap ${activeTab === "route" ? "bg-white text-blue-600 shadow-sm" : "text-gray-600"}`}
-            >
-              🛣️ จัดการเส้นทาง
-            </button>
-            {/* เพิ่ม Tab ที่ 3 */}
-            <button
-              onClick={() => setActiveTab("stop")}
-              className={`px-4 py-2 rounded-md font-medium text-sm whitespace-nowrap ${activeTab === "stop" ? "bg-white text-blue-600 shadow-sm" : "text-gray-600"}`}
-            >
-              🚏 จัดการจุดจอด
-            </button>
+            <button onClick={() => setActiveTab('bus')} className={`px-3 py-2 rounded-md font-medium text-sm whitespace-nowrap ${activeTab === 'bus' ? 'bg-white text-blue-600 shadow-sm' : 'text-gray-600'}`}>🚌 รถบัส</button>
+            <button onClick={() => setActiveTab('route')} className={`px-3 py-2 rounded-md font-medium text-sm whitespace-nowrap ${activeTab === 'route' ? 'bg-white text-blue-600 shadow-sm' : 'text-gray-600'}`}>🛣️ เส้นทาง</button>
+            <button onClick={() => setActiveTab('stop')} className={`px-3 py-2 rounded-md font-medium text-sm whitespace-nowrap ${activeTab === 'stop' ? 'bg-white text-blue-600 shadow-sm' : 'text-gray-600'}`}>🚏 จุดจอด</button>
+            {/* 2. เพิ่ม Tab ใหม่ */}
+            <button onClick={() => setActiveTab('route-stop')} className={`px-3 py-2 rounded-md font-medium text-sm whitespace-nowrap ${activeTab === 'route-stop' ? 'bg-white text-blue-600 shadow-sm' : 'text-gray-600'}`}>📍 จัดเส้นทาง</button>
           </div>
         </div>
-        {/* แสดงผล Component ตาม Tab */}
-        {activeTab === "bus" && (
+        
+        {/* แสดงผล Component */}
+        {activeTab === 'bus' && (
           <div>
-            <BusForm
-              form={form}
-              setForm={setForm}
-              handleSave={handleSave}
-              editingId={editingId}
-              handleCancel={handleCancel}
-            />
-            <BusTable
-              buses={buses}
-              handleEdit={handleEdit}
-              handleDelete={handleDelete}
-            />
+            <BusForm form={form} setForm={setForm} handleSave={handleSave} editingId={editingId} handleCancel={handleCancel} />
+            <BusTable buses={buses} handleEdit={handleEdit} handleDelete={handleDelete} />
           </div>
         )}
-        {activeTab === "route" && <RouteManagement />}
-        {activeTab === "stop" && <BusStopManagement />} {/* แทรกตรงนี้ */}
+        {activeTab === 'route' && <RouteManagement />}
+        {activeTab === 'stop' && <BusStopManagement />}
+        {activeTab === 'route-stop' && <RouteStopManagement />} {/* <-- 3. แทรกตรงนี้ */}
+        
       </div>
     </div>
   );
