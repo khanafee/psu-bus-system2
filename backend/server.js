@@ -6,6 +6,7 @@ const busStopRoutes = require('./routes/busStopRoutes');
 const routeStopRoutes = require('./routes/routeStopRoutes');
 const staffRoutes = require('./routes/staffRoutes');
 const scheduleRoutes = require('./routes/scheduleRoutes');
+const issueRoutes = require('./routes/issueRoutes');
 
 const app = express();
 app.use(cors());
@@ -17,6 +18,7 @@ app.use('/api/bus-stops', busStopRoutes);
 app.use('/api/route-stops', routeStopRoutes);
 app.use('/api/staff', staffRoutes);
 app.use('/api/schedules', scheduleRoutes);
+app.use('/api/issues', issueRoutes);
 
 const PORT = 3001;
 app.listen(PORT, () => {
