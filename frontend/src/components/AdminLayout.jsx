@@ -1,15 +1,16 @@
 import { NavLink, Outlet } from 'react-router-dom';
+import { AlertTriangle, Bus, Clock, Map, MapPinned, Signpost, Users } from 'lucide-react';
 
 export default function AdminLayout() {
   // สร้างรายการเมนูพร้อม Path ของ URL
   const menus = [
-    { path: '/', name: 'ตารางเดินรถ', icon: '⏰' },
-    { path: '/buses', name: 'รถบัส', icon: '🚌' },
-    { path: '/routes', name: 'เส้นทาง', icon: '🛣️' },
-    { path: '/stops', name: 'จุดจอด', icon: '🚏' },
-    { path: '/route-stops', name: 'จัดเส้นทาง', icon: '📍' },
-    { path: '/staff', name: 'พนักงาน', icon: '👥' },
-    { path: '/issues', name: 'แจ้งปัญหา', icon: '⚠️' },
+    { path: '/', name: 'ตารางเดินรถ', icon: Clock },
+    { path: '/buses', name: 'รถบัส', icon: Bus },
+    { path: '/routes', name: 'เส้นทาง', icon: Map },
+    { path: '/stops', name: 'จุดจอด', icon: Signpost },
+    { path: '/route-stops', name: 'จัดเส้นทาง', icon: MapPinned },
+    { path: '/staff', name: 'พนักงาน', icon: Users },
+    { path: '/issues', name: 'แจ้งปัญหา', icon: AlertTriangle },
   ];
 
   return (
@@ -34,7 +35,7 @@ export default function AdminLayout() {
                 }`
               }
             >
-              <span className="text-lg">{menu.icon}</span>
+              <menu.icon className="w-5 h-5 text-current shrink-0" />
               <span className="font-medium text-sm">{menu.name}</span>
             </NavLink>
           ))}

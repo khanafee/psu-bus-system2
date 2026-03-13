@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { AlertCircle } from 'lucide-react';
 
 export default function IssueManagement() {
   const [issues, setIssues] = useState([]);
@@ -106,7 +107,9 @@ export default function IssueManagement() {
         )}
 
         <div className="flex items-end gap-2 col-span-1 md:col-span-2 lg:col-span-3 mt-4">
-          <button type="submit" className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2.5 px-6 rounded-lg">{editingId ? 'บันทึกสถานะ' : '🚨 แจ้งปัญหา'}</button>
+          <button type="submit" className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2.5 px-6 rounded-lg inline-flex items-center">
+            {editingId ? 'บันทึกสถานะ' : <><AlertCircle className="w-5 h-5 mr-2" />แจ้งปัญหา</>}
+          </button>
           {editingId && <button type="button" onClick={handleCancel} className="bg-gray-400 hover:bg-gray-500 text-white font-semibold py-2.5 px-6 rounded-lg">ยกเลิก</button>}
         </div>
       </form>

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Bus, Crown } from 'lucide-react';
 
 export default function StaffManagement() {
   const [staffList, setStaffList] = useState([]);
@@ -101,7 +102,7 @@ export default function StaffManagement() {
                 <td className="px-6 py-4 text-gray-600">{s.username}</td>
                 <td className="px-6 py-4">
                   <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium ${s.role === 'admin' ? 'bg-purple-100 text-purple-800' : 'bg-green-100 text-green-800'}`}>
-                    {s.role === 'admin' ? '👑 Admin' : '🚌 Driver'}
+                    {s.role === 'admin' ? <><Crown className="w-4 h-4 mr-1.5" />Admin</> : <><Bus className="w-4 h-4 mr-1.5" />Driver</>}
                   </span>
                 </td>
                 <td className="px-6 py-4 text-right">
