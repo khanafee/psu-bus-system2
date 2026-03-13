@@ -4,6 +4,7 @@ import BusTable from "./components/BusTable";
 import RouteManagement from "./components/RouteManagement";
 import BusStopManagement from "./components/BusStopManagement";
 import RouteStopManagement from './components/RouteStopManagement';
+import StaffManagement from './components/StaffManagement';
 
 function App() {
   const [activeTab, setActiveTab] = useState("bus"); // สถานะสำหรับสลับหน้า (bus หรือ route)
@@ -71,6 +72,7 @@ function App() {
             <button onClick={() => setActiveTab('stop')} className={`px-3 py-2 rounded-md font-medium text-sm whitespace-nowrap ${activeTab === 'stop' ? 'bg-white text-blue-600 shadow-sm' : 'text-gray-600'}`}>🚏 จุดจอด</button>
             {/* 2. เพิ่ม Tab ใหม่ */}
             <button onClick={() => setActiveTab('route-stop')} className={`px-3 py-2 rounded-md font-medium text-sm whitespace-nowrap ${activeTab === 'route-stop' ? 'bg-white text-blue-600 shadow-sm' : 'text-gray-600'}`}>📍 จัดเส้นทาง</button>
+            <button onClick={() => setActiveTab('staff')} className={`px-3 py-2 rounded-md font-medium text-sm whitespace-nowrap ${activeTab === 'staff' ? 'bg-white text-blue-600 shadow-sm' : 'text-gray-600'}`}>👥 พนักงาน</button>
           </div>
         </div>
         
@@ -83,7 +85,8 @@ function App() {
         )}
         {activeTab === 'route' && <RouteManagement />}
         {activeTab === 'stop' && <BusStopManagement />}
-        {activeTab === 'route-stop' && <RouteStopManagement />} {/* <-- 3. แทรกตรงนี้ */}
+        {activeTab === 'route-stop' && <RouteStopManagement />} 
+        {activeTab === 'staff' && <StaffManagement />} 
         
       </div>
     </div>
